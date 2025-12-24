@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Block sensitive/system paths
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /account/
+Disallow: /auth/
+Disallow: /login/
+Disallow: /logout/
+Disallow: /register/
+Disallow: /reset-password/
+Disallow: /verify/
+Disallow: /settings/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /.env
+
+Sitemap: https://ico.bolt.host/sitemap.xml
