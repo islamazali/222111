@@ -1,0 +1,171 @@
+/* src/index.css (FULL UPDATED — keep as-is, only minor safety additions) */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: light; }
+  .dark { color-scheme: dark; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white font-arabic;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* ===== Modern motion defaults (أهدى + أفخم) ===== */
+  :root {
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --dur-fast: 220ms;
+    --dur-mid: 360ms;
+    --dur-slow: 520ms;
+  }
+
+  /* انتقالات — أبطأ + easing حديث */
+  a, button, input, textarea, select, summary {
+    transition-property: background-color, border-color, color, opacity, box-shadow, transform, filter;
+    transition-timing-function: var(--ease-out);
+    transition-duration: var(--dur-mid);
+  }
+
+  /* Focus حديث */
+  :focus-visible {
+    outline: 2px solid rgba(59, 130, 246, 0.65);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: rgba(59, 130, 246, 0.22);
+  }
+
+  /* تقليل الحركة لمن يريد */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 1ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* أقل فراغات (شكل عالمي) */
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .section-padding-hero {
+    @apply pt-20 pb-14 md:pt-24 md:pb-16 lg:pt-28 lg:pb-20;
+  }
+
+  /* Glass محسّن */
+  .glass {
+    @apply bg-white/70 dark:bg-secondary-900/60 backdrop-blur-xl;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.10);
+  }
+
+  .glass-strong {
+    @apply bg-white/85 dark:bg-secondary-900/75 backdrop-blur-2xl;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow: 0 18px 60px rgba(2, 6, 23, 0.18);
+  }
+
+  .gradient-primary {
+    @apply bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700;
+  }
+
+  .gradient-secondary {
+    @apply bg-gradient-to-br from-secondary-600 via-secondary-700 to-secondary-800;
+  }
+
+  .gradient-accent {
+    @apply bg-gradient-to-br from-accent-500 via-accent-600 to-accent-700;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-primary-700;
+  }
+
+  /* ===== Hover: subtle + premium ===== */
+  .hover-lift {
+    transition: transform var(--dur-mid) var(--ease-out);
+    will-change: transform;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .hover-glow {
+    transition: box-shadow var(--dur-slow) var(--ease-out), transform var(--dur-mid) var(--ease-out);
+    will-change: box-shadow, transform;
+  }
+  .hover-glow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 60px rgba(2, 6, 23, 0.14), 0 10px 24px rgba(59, 130, 246, 0.10);
+  }
+}
+
+@layer utilities {
+  .rtl-flip { transform: scaleX(-1); }
+
+  /* ===== Animation delays (أبطأ) ===== */
+  .animation-delay-200 { animation-delay: 0.25s; }
+  .animation-delay-400 { animation-delay: 0.45s; }
+  .animation-delay-600 { animation-delay: 0.65s; }
+  .animation-delay-800 { animation-delay: 0.85s; }
+
+  /* ===== Premium entrance animations (أهدى) ===== */
+  .animate-fade-in {
+    animation: fadeInScalePremium 900ms var(--ease-out) forwards;
+    will-change: opacity, transform;
+  }
+
+  .animate-slide-up {
+    animation: fadeInUpPremium 900ms var(--ease-out) forwards;
+    will-change: opacity, transform;
+  }
+
+  .shadow-soft { box-shadow: 0 18px 50px rgba(2, 6, 23, 0.14); }
+
+  .bg-grid {
+    background-image: radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.18) 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+
+  .bg-radial-spotlight {
+    background:
+      radial-gradient(900px circle at 20% 10%, rgba(14, 165, 233, 0.14), transparent 55%),
+      radial-gradient(800px circle at 80% 20%, rgba(99, 102, 241, 0.10), transparent 55%);
+  }
+
+  .card-border { border: 1px solid rgba(148, 163, 184, 0.20); }
+}
+
+/* ===== Premium keyframes (أقل قفز + أقل scale) ===== */
+@keyframes fadeInUpPremium {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScalePremium {
+  from { opacity: 0; transform: scale(0.985); }
+  to { opacity: 1; transform: scale(1); }
+}
