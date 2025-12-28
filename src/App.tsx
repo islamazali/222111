@@ -1,5 +1,6 @@
-// src/App.tsx (FULL UPDATED — fixes horizontal overflow globally + keeps your routing/SEO)
+// src/App.tsx (FULL UPDATED — global redirect to https://icode-app.site + fixes horizontal overflow globally + keeps your routing/SEO)
 
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { Header } from './components/layout/Header';
@@ -36,7 +37,40 @@ function pushDL(event: string, payload: Record<string, unknown> = {}) {
   window.dataLayer.push({ event, ...payload });
 }
 
+/**
+ * ✅ Global redirect (JS) to your canonical domain.
+ * - Keeps path/query/hash
+ * - Prevents redirect loop (checks origin)
+ * - Runs once on mount
+ *
+ * Problems/limits:
+ * - Not a server 301 (SEO not ideal)
+ * - If JS disabled, no redirect (rare)
+ * - There may be a tiny flash before redirect on slow devices
+ */
+function useCanonicalRedirect() {
+  useEffect(() => {
+    const TARGET_ORIGIN = 'https://icode-app.site';
+
+    // If you're already on the target origin, do nothing.
+    if (window.location.origin === TARGET_ORIGIN) return;
+
+    // Build full target URL preserving path/query/hash
+    const next =
+      TARGET_ORIGIN +
+      window.location.pathname +
+      window.location.search +
+      window.location.hash;
+
+    // Replace (no back-button bounce)
+    window.location.replace(next);
+  }, []);
+}
+
 function App() {
+  // ✅ Redirect everything (/, /offer, /portal...) to icode-app.site
+  useCanonicalRedirect();
+
   return (
     <ThemeProvider>
       <BrowserRouter>
@@ -59,7 +93,7 @@ function App() {
           position="left"
         />
 
-        {/* ✅ الحل: قص أي overflow أفقي من جذر التطبيق */}
+        {/* ✅ قص أي overflow أفقي من جذر التطبيق */}
         <div className="min-h-screen flex flex-col overflow-x-hidden">
           <Header />
 
