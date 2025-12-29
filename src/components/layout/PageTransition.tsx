@@ -1,31 +1,11 @@
-import { ReactNode, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { ReactNode } from 'react';
 
 interface PageTransitionProps {
   children: ReactNode;
+  transitionStage: 'fadeIn' | 'fadeOut';
 }
 
-export function PageTransition({ children }: PageTransitionProps) {
-  const location = useLocation();
-  const [displayLocation, setDisplayLocation] = useState(location);
-  const [transitionStage, setTransitionStage] = useState('fadeIn');
-
-  useEffect(() => {
-    if (location !== displayLocation) {
-      setTransitionStage('fadeOut');
-    }
-  }, [location, displayLocation]);
-
-  useEffect(() => {
-    if (transitionStage === 'fadeOut') {
-      const timer = setTimeout(() => {
-        setDisplayLocation(location);
-        setTransitionStage('fadeIn');
-      }, 350);
-      return () => clearTimeout(timer);
-    }
-  }, [transitionStage, location]);
-
+export function PageTransition({ children, transitionStage }: PageTransitionProps) {
   return (
     <div
       className={`transition-all duration-[400ms] ease-in-out ${
