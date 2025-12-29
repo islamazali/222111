@@ -1,4 +1,4 @@
-// src/App.tsx (FULL UPDATED — global redirect to https://icode-app.site + fixes horizontal overflow globally + keeps your routing/SEO)
+// src/App.tsx (FULLY UPDATED — global redirect to https://icode-app.site + fixes horizontal overflow globally + keeps your routing/SEO)
 
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
