@@ -42,12 +42,12 @@
 ### 6. تأثيرات CSS عامة محسّنة
 - جميع العناصر تحصل على انتقالات تلقائية للألوان والحدود
 - `cubic-bezier(0.4, 0, 0.2, 1)` للانتقالات السلسة
-- 4 أنيميشن جاهزة للاستخدام:
-  - `fadeInUp` - ظهور من الأسفل
-  - `fadeInScale` - ظهور مع تكبير
-  - `slideInFromRight` - انزلاق من اليمين (مناسب للعربي)
-  - `slideInFromLeft` - انزلاق من اليسار
-- Classes جاهزة: `.smooth-transition` و `.smooth-transform`
+- أنيميشن جاهزة للاستخدام (Premium):
+  - `fadeInUpPremium` - ظهور من الأسفل بحركة هادئة
+  - `fadeInScalePremium` - ظهور مع تكبير خفيف
+- Classes جاهزة:
+  - `.animate-slide-up` لتطبيق `fadeInUpPremium`
+  - `.animate-fade-in` لتطبيق `fadeInScalePremium`
 
 ### 6. Hook مخصص للأنيميشن عند التمرير
 - `useScrollAnimation` - لإنشاء تأثيرات عند ظهور العناصر في viewport
