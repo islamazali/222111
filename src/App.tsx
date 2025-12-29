@@ -1,13 +1,13 @@
 // src/App.tsx (FULL UPDATED — global redirect to https://icode-app.site + fixes horizontal overflow globally + keeps your routing/SEO)
 
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { ScrollToTop } from './components/layout/ScrollToTop';
 import { ProgressBar } from './components/layout/ProgressBar';
-import { PageTransition } from './components/layout/PageTransition';
+import { AnimatedRoutes } from './components/layout/AnimatedRoutes';
 import { BackToTop } from './components/layout/BackToTop';
 import { FloatingWhatsApp } from './components/layout/FloatingWhatsApp';
 
@@ -99,8 +99,7 @@ function App() {
 
           {/* ✅ قص overflow في main كمان (لو عنصر جوّه بيكسر العرض) */}
           <main className="flex-1 overflow-x-hidden">
-            <PageTransition>
-              <Routes>
+            <AnimatedRoutes>
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/pricing" element={<Pricing />} />
@@ -135,8 +134,7 @@ function App() {
                     </div>
                   }
                 />
-              </Routes>
-            </PageTransition>
+            </AnimatedRoutes>
           </main>
 
           <Footer />
