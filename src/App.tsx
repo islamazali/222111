@@ -48,7 +48,6 @@ function pushDL(event: string, payload: Record<string, unknown> = {}) {
  * - If JS disabled, no redirect (rare)
  * - There may be a tiny flash before redirect on slow devices
  */
-function useCanonicalRedirect() {
   useEffect(() => {
     const TARGET_ORIGIN = 'https://icode-app.site';
 
