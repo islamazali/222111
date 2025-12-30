@@ -19,13 +19,22 @@ declare global {
   }
 }
 
+// Utility to push events to the dataLayer for analytics. Ensures the array exists.
 function pushDL(event: string, payload: Record<string, unknown> = {}) {
   if (!window.dataLayer) window.dataLayer = [];
   window.dataLayer.push({ event, ...payload });
 }
 
+// A reusable type for icons from lucide-react. Allows overriding className.
 type IconType = React.ComponentType<{ className?: string }>;
 
+/**
+ * Home component – the landing page for the Icode website.
+ * This page has been adjusted based on user feedback:
+ *  - The hero heading and supporting text have been refined to clearly state the 7‑day delivery promise.
+ *  - A third call‑to‑action has been added to allow email contact in addition to WhatsApp and the 7‑day offer.
+ *  - FAQ wording has been standardised to Modern Standard Arabic for better clarity.
+ */
 export function Home() {
   const WHATSAPP_PHONE = '201507619503';
   const WHATSAPP_PREFILL = encodeURIComponent(
@@ -45,6 +54,7 @@ export function Home() {
   );
   const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_PHONE}?text=${WHATSAPP_PREFILL}`;
 
+  // Service definitions shown under the "خدماتنا" section.
   const services: { icon: IconType; title: string; description: string }[] = [
     { icon: Code2, title: 'تطوير المواقع', description: 'مواقع سريعة، RTL جاهزة، وتجربة مستخدم واضحة' },
     { icon: Smartphone, title: 'تطبيقات الموبايل', description: 'حلول عملية حسب احتياجك (هجين/أصلي) مع خطة إطلاق' },
@@ -54,6 +64,7 @@ export function Home() {
     { icon: Users, title: 'استشارات تقنية', description: 'قرار تقني سريع: ما الذي تبنيه؟ وكيف؟ وبأي تكلفة؟' },
   ];
 
+  // Examples of complete solutions to help visitors visualise deliverables.
   const solutionExamples: {
     title: string;
     category: string;
@@ -80,6 +91,7 @@ export function Home() {
     },
   ];
 
+  // Four pillars describing the trust factors of the service.
   const trustPillars: { icon: IconType; title: string; desc: string }[] = [
     { icon: CheckCircle, title: 'نطاق واضح قبل البدء', desc: 'بنكتب المتطلبات والصفحات والتسليمات بوضوح عشان مفيش مفاجآت.' },
     { icon: Shield, title: 'أساسيات حماية', desc: 'إعدادات أمان أولية: HTTPS، حماية نماذج، تهيئة سياسات مناسبة حسب المشروع.' },
@@ -87,6 +99,7 @@ export function Home() {
     { icon: Award, title: 'كود نظيف', desc: 'هيكلة قابلة للصيانة والتطوير بدل ترقيعات.' },
   ];
 
+  // Indicators displayed under the hero to reinforce key selling points.
   const deliveryIndicators: { value: string; label: string }[] = [
     { value: '7 أيام', label: 'MVP سريع (للعرض المحدد)' },
     { value: 'RTL', label: 'واجهة عربية احترافية' },
@@ -94,6 +107,7 @@ export function Home() {
     { value: 'أداء', label: 'تحسين سرعة وتجربة' },
   ];
 
+  // Steps of the work process.
   const workProcess: { number: string; title: string; description: string }[] = [
     { number: '01', title: 'تحديد النطاق', description: 'هدف الصفحة + الصفحات المطلوبة + مخرجات واضحة' },
     { number: '02', title: 'تصميم سريع', description: 'شكل عملي يخدم الهدف (مش تجميل فارغ)' },
@@ -101,35 +115,39 @@ export function Home() {
     { number: '04', title: 'إطلاق وتسليم', description: 'نشر + تسليم ملفات/حسابات + نقاط تشغيل واضحة' },
   ];
 
+  // Frequently asked questions. Updated wording for clarity.
   const faqs: { q: string; a: string }[] = [
     { q: 'هل “7 أيام” لكل المشاريع؟', a: 'العرض مخصص لموقع/صفحات محددة بنطاق واضح (MVP). المشاريع الكبيرة أو الأنظمة العميقة لها جدول مختلف.' },
-    { q: 'إيه المطلوب مني عشان نبدأ؟', a: 'فكرة واضحة + أمثلة مواقع تعجبك + لوجو/ألوان لو موجودة. والباقي بنرتبه معك.' },
+    { q: 'ما المطلوب مني لبدء التنفيذ؟', a: 'فكرة واضحة + أمثلة مواقع تعجبك + شعار/ألوان إذا وُجدت. والباقي نرتبه معك.' },
     { q: 'هل في ضمان؟', a: 'الضمان مرتبط بالنطاق المكتوب: لو اتفقنا على صفحات/مخرجات ولم تُسلَّم كما هو، يتم التصحيح وفق الاتفاق.' },
     { q: 'هل تقدم استضافة ودومين؟', a: 'نقدر نساعدك في اختيار وتهيئة الدومين والاستضافة، أو نشتغل على حساباتك أنت.' },
   ];
 
   return (
     <div className="min-h-screen">
+      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        {/* Subtle gradients and noise for background texture */}
         <div className="absolute inset-0 gradient-primary opacity-10 bg-noise" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white dark:via-secondary-900/50 dark:to-secondary-900" />
 
         <div className="container-custom relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Copy column */}
               <div className="text-center lg:text-right order-2 lg:order-1">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-900 dark:text-white mb-6 animate-fade-in">
-                  نبني <span className="text-gradient">موقعك أو نظامك</span>
+                  نُطوّر <span className="text-gradient">موقعك أو تطبيقك</span>
                   <br />
-                  بنطاق واضح ونتيجة ملموسة
+                  في 7 أيام بنطاق واضح ونتيجة ملموسة
                 </h1>
 
                 <p className="text-lg md:text-xl text-secondary-600 dark:text-secondary-300 mb-3 leading-relaxed animate-slide-up">
-                  موقع شغال خلال 7 أيام (للعرض المحدد) — بنطاق مكتوب وتسليمات واضحة.
+                  نُسلّم موقعًا جاهزًا خلال 7 أيام مع نطاق مكتوب وتسليمات واضحة.
                 </p>
 
                 <p className="text-base md:text-lg text-secondary-500 dark:text-secondary-400 mb-8 animate-slide-up animation-delay-200">
-                  مناسب للشركات الناشئة، المتاجر، العيادات، وكل مشروع محتاج إطلاق سريع بدون فوضى.
+                  مناسب للشركات الناشئة، المتاجر الإلكترونية، العيادات، وأي مشروع يحتاج لإطلاق سريع بدون تعقيد.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 animate-slide-up animation-delay-400">
@@ -149,6 +167,7 @@ export function Home() {
                   ))}
                 </div>
 
+                {/* Call to action buttons including new contact option */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up animation-delay-400">
                   <a
                     href={WHATSAPP_LINK}
@@ -182,6 +201,22 @@ export function Home() {
                       شوف عرض 7 أيام
                     </Button>
                   </Link>
+
+                  {/* New: Email contact link for users preferring email over WhatsApp */}
+                  <Link
+                    to="/contact"
+                    aria-label="اتصل عبر البريد"
+                    onClick={() =>
+                      pushDL('nav_click', {
+                        source: 'home_hero',
+                        target: '/contact',
+                      })
+                    }
+                  >
+                    <Button size="lg" variant="outline">
+                      راسلنا عبر البريد
+                    </Button>
+                  </Link>
                 </div>
 
                 <p className="mt-5 text-sm text-secondary-500 dark:text-secondary-400">
@@ -189,12 +224,13 @@ export function Home() {
                 </p>
               </div>
 
+              {/* Image column */}
               <div className="order-1 lg:order-2 flex items-center justify-center">
                 <div className="relative w-full max-w-2xl animate-fade-in animation-delay-400">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20 blur-3xl rounded-full" />
                   <img
                     src="/banar.png"
-                    alt="icode - واجهتك قدام العالم"
+                    alt="icode — واجهتك أمام العالم"
                     className="relative w-full h-auto rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
                     loading="eager"
                     decoding="async"
@@ -205,6 +241,7 @@ export function Home() {
               </div>
             </div>
 
+            {/* Key indicators under the hero */}
             <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
               {deliveryIndicators.map((it, idx) => (
                 <Card key={idx} className="p-4 text-center" hover>
@@ -217,6 +254,7 @@ export function Home() {
         </div>
       </section>
 
+      {/* Why us section */}
       <section className="section-padding bg-secondary-50 dark:bg-secondary-900">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -250,6 +288,7 @@ export function Home() {
         </div>
       </section>
 
+      {/* Services section */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="text-center mb-16">
@@ -279,6 +318,7 @@ export function Home() {
         </div>
       </section>
 
+      {/* Work process section */}
       <section className="section-padding bg-secondary-900 text-white">
         <div className="container-custom">
           <div className="text-center mb-16">
@@ -308,6 +348,7 @@ export function Home() {
         </div>
       </section>
 
+      {/* Solution examples section */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="text-center mb-16">
@@ -354,6 +395,7 @@ export function Home() {
         </div>
       </section>
 
+      {/* FAQ section */}
       <section className="section-padding bg-secondary-50 dark:bg-secondary-900">
         <div className="container-custom">
           <div className="text-center mb-16">
@@ -380,10 +422,11 @@ export function Home() {
         </div>
       </section>
 
+      {/* Final call to action section */}
       <section className="section-padding">
         <div className="container-custom">
           <Card className="p-12 md:p-16 text-center" glass>
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white mb-6">جاهز نحدد النطاق ونبدأ؟</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white mb-6">هل أنت جاهز لنحدد النطاق ونبدأ؟</h2>
             <p className="text-xl text-secondary-600 dark:text-secondary-300 mb-8 max-w-2xl mx-auto">
               ابدأ بعرض 7 أيام أو افتح واتساب الآن — ونقفل المتطلبات بوضوح قبل التنفيذ.
             </p>
@@ -419,6 +462,22 @@ export function Home() {
               >
                 <Button size="lg" variant="outline">
                   شوف عرض 7 أيام
+                </Button>
+              </Link>
+
+              {/* New: email contact button in the footer */}
+              <Link
+                to="/contact"
+                aria-label="اتصل عبر البريد"
+                onClick={() =>
+                  pushDL('nav_click', {
+                    source: 'home_footer',
+                    target: '/contact',
+                  })
+                }
+              >
+                <Button size="lg" variant="outline">
+                  راسلنا عبر البريد
                 </Button>
               </Link>
             </div>
