@@ -34,6 +34,13 @@ type IconType = React.ComponentType<{ className?: string }>;
  *  - The hero heading and supporting text have been refined to clearly state the 7‑day delivery promise.
  *  - A third call‑to‑action has been added to allow email contact in addition to WhatsApp and the 7‑day offer.
  *  - FAQ wording has been standardised to Modern Standard Arabic for better clarity.
+ *
+ * SEO Task (GrowthApp):
+ * Integrate EXACT keywords into headings of homepage:
+ * - "تصميم مواقع احترافية"
+ * - "تصميم متجر الكتروني"
+ * - "شركة برمجة مواقع"
+ * These must appear exactly as written in <h1>..<h4> tags. [web:110][web:109]
  */
 export function Home() {
   const WHATSAPP_PHONE = '201507619503';
@@ -136,11 +143,22 @@ export function Home() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Copy column */}
               <div className="text-center lg:text-right order-2 lg:order-1">
+                {/* ✅ H1 contains EXACT keyword: "تصميم مواقع احترافية" */}
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-900 dark:text-white mb-6 animate-fade-in">
-                  نُطوّر <span className="text-gradient">موقعك أو تطبيقك</span>
+                  تصميم مواقع احترافية — نُطوّر <span className="text-gradient">موقعك أو تطبيقك</span>
                   <br />
                   في 7 أيام بنطاق واضح ونتيجة ملموسة
                 </h1>
+
+                {/* ✅ H2 contains EXACT keyword: "تصميم متجر الكتروني" */}
+                <h2 className="text-lg md:text-xl font-semibold text-secondary-800 dark:text-secondary-100 mb-3 animate-slide-up">
+                  تصميم متجر الكتروني
+                </h2>
+
+                {/* ✅ H3 contains EXACT keyword: "شركة برمجة مواقع" */}
+                <h3 className="text-base md:text-lg text-secondary-600 dark:text-secondary-300 mb-4 animate-slide-up animation-delay-200">
+                  شركة برمجة مواقع
+                </h3>
 
                 <p className="text-lg md:text-xl text-secondary-600 dark:text-secondary-300 mb-3 leading-relaxed animate-slide-up">
                   نُسلّم موقعًا جاهزًا خلال 7 أيام مع نطاق مكتوب وتسليمات واضحة.
