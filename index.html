@@ -4,15 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO & Meta Tags -->
     <meta name="google-site-verification" content="Ed3HarTJF8fz06SlMgoIEQ7r8arJviyzYEEpL1AD6TU" />
+
+    <!-- Meta Title (Title Tag) -->
     <title>برمجة مواقع، تصميم مواقع، تطوير تطبيقات - iCode - القاهرة</title>
-    <meta name="description" content="iCode استوديو برمجة في القاهرة: تصميم مواقع، برمجة مواقع، وتطوير تطبيقات ويب وموبايل باحتراف—نحوّل فكرتك لمشروع جاهز بسرعة." />
+
+    <!-- Meta Description -->
+    <meta
+      name="description"
+      content="iCode استوديو برمجة في القاهرة: تصميم مواقع، برمجة مواقع، وتطوير تطبيقات ويب وموبايل باحتراف—نحوّل فكرتك لمشروع جاهز بسرعة."
+    />
+
     <link rel="canonical" href="https://icod.my/" />
     <meta name="robots" content="index,follow" />
+
     <meta name="theme-color" content="#0b1220" />
 
-    <!-- PWA -->
+    <!-- PWA (احذف manifest لو مش مستخدمه) -->
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -34,6 +42,65 @@
     <meta name="twitter:description" content="نحوّل فكرتك لموقع شغال خلال 7 أيام — أو لا تدفع شيئًا." />
     <meta name="twitter:image" content="https://icod.my/og.jpg" />
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-56J9S7S4');
+    </script>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "icode",
+        "url": "https://icod.my/",
+        "logo": "https://icod.my/favicon.png",
+        "sameAs": [],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "availableLanguage": ["ar"]
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- GTM (noscript) MUST be first in body -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-56J9S7S4"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
