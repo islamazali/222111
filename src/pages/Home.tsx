@@ -142,8 +142,9 @@ export function Home() {
               <div className="text-center lg:text-right order-2 lg:order-1">
                 {/* Heading keywords (EXACT) */}
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-900 dark:text-white mb-6 animate-fade-in">
-                  تصميم مواقع احترافية — نُطوّر <span className="text-gradient">موقعك أو تطبيقك</span>
-                  <br />
+            تصميم مواقع احترافية — نُطوّر <span className="text-gradient">موقعك أو تطبيقك</span>
+                        <br />
+            في 7 أيام بنطاق واضح، نتيجة ملموسة، ضمان مكتوب                  <br />
                   في 7 أيام بنطاق واضح ونتيجة ملموسة
                 </h1>
 
