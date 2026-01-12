@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
+import { TestimonialsSection } from '../components/TestimonialsSection';
 
 declare global {
   interface Window {
@@ -368,6 +369,9 @@ export function Home() {
       </section>
 
       {/* Solution examples section */}
+    {/* Testimonials section */}
+    <TestimonialsSection />
+
       <section className="section-padding">
         <div className="container-custom">
           <div className="text-center mb-16">
