@@ -13,6 +13,7 @@ import {
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { TestimonialsSection } from '../components/TestimonialsSection';
+import { cPricingComparisonSection } from '../components/cPricingComparisonSection';
 
 declare global {
   interface Window {
@@ -371,6 +372,9 @@ export function Home() {
       {/* Solution examples section */}
     {/* Testimonials section */}
     <TestimonialsSection />
+      
+    {/* Pricing Comparison section */}
+    <cPricingComparisonSection />
 
       <section className="section-padding">
         <div className="container-custom">
